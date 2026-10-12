@@ -2,13 +2,13 @@
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup|resume|clear",
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh start"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" start"
           }
-        ],
-        "matcher": "startup|resume|clear"
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh submit"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" submit"
           }
         ]
       }
@@ -26,27 +26,28 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh complete"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" complete"
           }
         ]
       }
     ],
-    "PostToolUseFailure": [
+    "StopFailure": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh error"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" error"
           }
         ]
       }
     ],
     "Notification": [
       {
+        "matcher": "permission_prompt|idle_prompt|elicitation_dialog|agent_needs_input",
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh notification"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" notification"
           }
         ]
       }
@@ -56,7 +57,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh precompact"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" precompact"
           }
         ]
       }
@@ -66,7 +67,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/play.sh session_end"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/play.sh\" session_end"
           }
         ]
       }
