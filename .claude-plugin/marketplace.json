@@ -1,7 +1,16 @@
 {
   "name": "naija-sound-fx",
-  "owner": { "name": "Bashir Suleiman" },
+  "owner": {
+    "name": "Bashir Suleiman"
+  },
+  "metadata": {
+    "description": "Nigerian Pidgin sound effects for Claude Code"
+  },
   "plugins": [
-    { "name": "naija-sound-fx", "source": "./", "description": "Nigerian Pidgin sound effects for Claude Code. E don finish!" }
+    {
+      "name": "naija-sound-fx",
+      "source": "./",
+      "description": "Nigerian Pidgin sound effects for Claude Code. E don finish!"
+    }
   ]
 }
