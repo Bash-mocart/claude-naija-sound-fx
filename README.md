@@ -1,4 +1,4 @@
-# naija-sound-fx 🇳🇬
+# Claude Naija Sound FX 🇳🇬
 
 Nigerian Pidgin sound effects for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
 Stop staring at the terminal — Mummy go call you when e don finish.
@@ -16,8 +16,8 @@ Stop staring at the terminal — Mummy go call you when e don finish.
 ## Install
 
 ```
-/plugin marketplace add Bash-mocart/naija-sound-fx
-/plugin install naija-sound-fx@naija-sound-fx
+/plugin marketplace add Bash-mocart/claude-naija-sound-fx
+/plugin install claude-naija-sound-fx@claude-naija-sound-fx
 ```
 
 Restart Claude Code. That's it.
@@ -37,7 +37,7 @@ Drop any `.mp3` into `sounds/<event>/` — `start`, `submit`, `complete`, `error
 `notification`, `precompact`, `session_end`. One is picked at random. No code changes.
 PRs with more Naija lines welcome (Yoruba, Igbo, Hausa, Warri, Port Harcourt… bring am).
 
-Voices are AI-generated characters — not real people.
+Voices are AI-generated characters — not real people. Unofficial community plugin, not made by Anthropic.
 Inspired by [claude-sound-fx](https://github.com/6m1w/claude-sound-fx).
 
 MIT
