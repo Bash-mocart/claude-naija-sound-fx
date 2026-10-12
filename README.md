@@ -5,13 +5,13 @@ Stop staring at the terminal — Mummy go call you when e don finish.
 
 | When | You hear (random pick) |
 |---|---|
-| Session starts | *"Oya! Ikeja-Obalende, enter with your change o! We dey move!"* · *"Laptop don on, coffee don ready. Make we chop this work!"* |
-| You send a prompt | *"Sharp sharp!"* |
-| Task finished | *"E don finish! Who be like God? Nobody!"* · *"Ehen! See as you finish am. God bless you, my pikin."* · *"Work done. Na why dem dey call me Chairman."* |
-| Claude crashed (network, rate limit, server) | *"Wahala dey o! Wahala be like bicycle."* · *"Ahn ahn! Is it me you are doing this to?"* · *"NEPA don take light!"* |
-| Claude needs you (permission, waiting on you) | *"Oga! Oga! Abeg come check something."* · *"If I come there ehn… come here this minute!"* |
-| Context compacting | *"Shift! Shift! Four-four for one row!"* · *"Brain don full. Make I pack my load small."* |
-| Session ends | *"Odabo! Bye bye o! Make una go rest."* · *"I don close shop. If you call me, I no go pick."* |
+| Session starts | *"We move!"* · *"Oya! Ikeja-Obalende, enter with your change o! We dey move!"* · *"Laptop don on, coffee don ready. Make we chop this work!"* |
+| You send a prompt | *"No wahala!"* · *"Sharp sharp!"* |
+| Task finished | *"E choke!"* · *"Village people don fail! E don finish!"* · *"E don finish! Who be like God? Nobody!"* · *"Ehen! See as you finish am. God bless you, my pikin."* · *"Work done. Na why dem dey call me Chairman."* |
+| Claude crashed (network, rate limit, server) | *"Na village people!"* · *"Shege! Network don japa!"* · *"Wahala dey o! Wahala be like bicycle."* · *"Ahn ahn! Is it me you are doing this to?"* · *"NEPA don take light!"* |
+| Claude needs you (permission, waiting on you) | *"Oga, you don japa? I dey wait you o!"* · *"Oga! Oga! Abeg come check something."* · *"If I come there ehn… come here this minute!"* |
+| Context compacting | *"Body no be firewood!"* · *"Shift! Shift! Four-four for one row!"* · *"Brain don full. Make I pack my load small."* |
+| Session ends | *"I don japa!"* · *"Odabo! Bye bye o! Make una go rest."* · *"I don close shop. If you call me, I no go pick."* |
 
 ## Install
 
