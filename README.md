@@ -3,15 +3,15 @@
 Nigerian Pidgin sound effects for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
 Stop staring at the terminal — Mummy go call you when e don finish.
 
-| When | You hear (random pick) |
+| When | You hear (random, never the same one twice in a row) |
 |---|---|
-| Session starts | *"We move!"* · *"Oya! Ikeja-Obalende, enter with your change o! We dey move!"* · *"Laptop don on, coffee don ready. Make we chop this work!"* |
-| You send a prompt | *"No wahala!"* · *"Sharp sharp!"* |
-| Task finished | *"E choke!"* · *"Village people don fail! E don finish!"* · *"E don finish! Who be like God? Nobody!"* · *"Ehen! See as you finish am. God bless you, my pikin."* · *"Work done. Na why dem dey call me Chairman."* |
-| Claude crashed (network, rate limit, server) | *"Na village people!"* · *"Shege! Network don japa!"* · *"Wahala dey o! Wahala be like bicycle."* · *"Ahn ahn! Is it me you are doing this to?"* · *"NEPA don take light!"* |
-| Claude needs you (permission, waiting on you) | *"Oga, you don japa? I dey wait you o!"* · *"Oga! Oga! Abeg come check something."* · *"If I come there ehn… come here this minute!"* |
-| Context compacting | *"Body no be firewood!"* · *"Shift! Shift! Four-four for one row!"* · *"Brain don full. Make I pack my load small."* |
-| Session ends | *"I don japa!"* · *"Odabo! Bye bye o! Make una go rest."* · *"I don close shop. If you call me, I no go pick."* |
+| Session starts | *"Who dey breathe? We don land!"* · *"Oya, gbas gbos! Make we begin."* · *"We move!"* · *"Oya! Ikeja-Obalende, enter with your change o! We dey move!"* · *"Laptop don on, coffee don ready. Make we chop this work!"* |
+| You send a prompt | *"Emi lokan! Na my turn now."* · *"Your wish na my command, Chairman."* · *"No wahala!"* · *"Sharp sharp!"* |
+| Task finished | *"Omo! E don set!"* · *"Na God o! Work don finish."* · *"E choke!"* · *"Village people don fail! E don finish!"* · *"E don finish! Who be like God? Nobody!"* · *"Ehen! See as you finish am. God bless you, my pikin."* · *"Work done. Na why dem dey call me Chairman."* |
+| Claude crashed (network, rate limit, server) | *"Sapa don hold us!"* · *"Ehn ehn! Wetin be this one?"* · *"Na village people!"* · *"Shege! Network don japa!"* · *"Wahala dey o! Wahala be like bicycle."* · *"Ahn ahn! Is it me you are doing this to?"* · *"NEPA don take light!"* |
+| Claude needs you (permission, waiting on you) | *"Oga at the top! Approval dey wait you!"* · *"Abeg you dey there? No ghost me o."* · *"Oga, you don japa? I dey wait you o!"* · *"Oga! Oga! Abeg come check something."* · *"If I come there ehn… come here this minute!"* |
+| Context compacting | *"Data wan finish. Make I manage am."* · *"Too much gist! Make I summarise."* · *"Body no be firewood!"* · *"Shift! Shift! Four-four for one row!"* · *"Brain don full. Make I pack my load small."* |
+| Session ends | *"Bye bye! No forget to off gen!"* · *"Make I sleep before NEPA take light."* · *"I don japa!"* · *"Odabo! Bye bye o! Make una go rest."* · *"I don close shop. If you call me, I no go pick."* |
 
 ## Install
 

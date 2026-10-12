@@ -5,7 +5,13 @@
 dir="$(cd "$(dirname "$0")/.." && pwd)/sounds/$1"
 files=("$dir"/*.mp3)
 [ -e "${files[0]}" ] || exit 0
-f="${files[RANDOM % ${#files[@]}]}"
+# Random pick, never the same clip twice in a row for this event.
+last_file="${TMPDIR:-/tmp}/claude-naija-last-$1"
+last="$(cat "$last_file" 2>/dev/null)"
+pool=(); for x in "${files[@]}"; do [ "$x" != "$last" ] && pool+=("$x"); done
+[ "${#pool[@]}" -eq 0 ] && pool=("${files[@]}")
+f="${pool[RANDOM % ${#pool[@]}]}"
+echo "$f" > "$last_file" 2>/dev/null
 vol="${NAIJA_SOUND_VOLUME//[^0-9]/}"; vol="${vol:-60}"; [ "$vol" -gt 100 ] && vol=100
 
 if command -v afplay >/dev/null; then
