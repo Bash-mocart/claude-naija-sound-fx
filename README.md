@@ -84,6 +84,7 @@ Add any of these to the `env` block of `~/.claude/settings.json`, then restart C
 | `NAIJA_SOUND_SURPRISE` | `10` | % chance a skipped event plays anyway (`0` = never) |
 | `NAIJA_SOUND_MUTE` | `0` | `1` = silence everything (meeting mode) |
 | `NAIJA_SOUND_ONLY_MINE` | `0` | `1` = play only your own clips (below) |
+| `NAIJA_SOUND_PREFER` | — | A word, e.g. `mummy`: when an event has a clip whose filename contains it, that clip always plays |
 
 ## Use your own sounds
 

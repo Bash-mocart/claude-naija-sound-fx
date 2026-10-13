@@ -30,6 +30,12 @@ mine="$HOME/.claude/naija-sounds/$1"
 files=("$mine"/*.mp3 "$mine"/*.wav "$mine"/*.m4a)
 [ "${NAIJA_SOUND_ONLY_MINE:-0}" = "1" ] || files+=("$(cd "$(dirname "$0")/.." && pwd)/sounds/$1"/*.mp3)
 [ "${#files[@]}" -gt 0 ] || exit 0
+# NAIJA_SOUND_PREFER=word: if any clip's filename contains it (any case), only those play.
+if [ -n "${NAIJA_SOUND_PREFER:-}" ]; then
+  shopt -s nocasematch; fav=()
+  for x in "${files[@]}"; do [[ "$(basename "$x")" == *"$NAIJA_SOUND_PREFER"* ]] && fav+=("$x"); done
+  shopt -u nocasematch; [ "${#fav[@]}" -gt 0 ] && files=("${fav[@]}")
+fi
 # Random pick, never the same clip twice in a row for this event.
 last_file="$state-last-$1"
 last="$(cat "$last_file" 2>/dev/null)"

@@ -58,6 +58,9 @@ expect "no back-to-back repeats"             0  0 "$(uniq -d "$T/log" | wc -l | 
 play 10 mac 99 complete NAIJA_SOUND_ONLY_MINE=1 >/dev/null
 expect "ONLY_MINE plays only own clips"     10 10 "$(grep -c "mummy's clip" "$T/log")"
 expect "ONLY_MINE + no own clips is silent"  0  0 "$(play 5 mac 99 error NAIJA_SOUND_ONLY_MINE=1)"
+play 20 mac 99 complete NAIJA_SOUND_MODE=all NAIJA_SOUND_PREFER="S CLIP" >/dev/null
+expect "PREFER always picks the favourite"  20 20 "$(grep -c "mummy's clip" "$T/log")"
+expect "PREFER with no match stays random"  10 10 "$(play 10 mac 99 error NAIJA_SOUND_MODE=all NAIJA_SOUND_PREFER=nomatch)"
 
 # Every event folder in the pack has clips.
 for e in start submit complete error notification precompact session_end; do
