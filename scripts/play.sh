@@ -4,11 +4,14 @@
 # NAIJA_SOUND_VOLUME=0..100 (default 60). NAIJA_SOUND_MUTE=1 silences everything.
 # NAIJA_SOUND_ONLY_MINE=1 skips the pack's clips and plays only yours.
 # NAIJA_SOUND_MODE=smart (default): errors always; finished / needs-you only when you've been
-#   away NAIJA_SOUND_AWAY_AFTER seconds (default 30); everything else silent. =all plays every event.
+#   away NAIJA_SOUND_AWAY_AFTER seconds (default 30); everything else is a surprise that plays
+#   NAIJA_SOUND_SURPRISE percent of the time (default 10, 0 = never). =all plays every event.
 [ "${NAIJA_SOUND_MUTE:-0}" = "1" ] && exit 0
 state="${TMPDIR:-/tmp}/claude-naija"
 if [ "${NAIJA_SOUND_MODE:-smart}" != "all" ]; then
   away_after="${NAIJA_SOUND_AWAY_AFTER//[^0-9]/}"; away_after="${away_after:-30}"
+  chance="${NAIJA_SOUND_SURPRISE//[^0-9]/}"; chance="${chance:-10}"
+  skip() { [ $((RANDOM % 100)) -lt "$chance" ] || exit 0; } # skipped events still win sometimes
   # Seconds since last keyboard/mouse input; empty where we can't tell.
   idle="$(ioreg -c IOHIDSystem 2>/dev/null | awk '/HIDIdleTime/ {print int($NF/1000000000); exit}')"
   # ponytail: one global turn timer, so parallel sessions can share it; per-session if that misleads.
@@ -16,10 +19,10 @@ if [ "${NAIJA_SOUND_MODE:-smart}" != "all" ]; then
   case "$1" in
     error) ;;
     complete)
-      if [ -n "$idle" ]; then [ "$idle" -ge "$away_after" ] || exit 0
-      else started="$(cat "$state-turn-start" 2>/dev/null)"; [ $(( $(date +%s) - ${started:-0} )) -ge 60 ] || exit 0; fi ;;
-    notification) [ -z "$idle" ] || [ "$idle" -ge "$away_after" ] || exit 0 ;;
-    *) exit 0 ;;
+      if [ -n "$idle" ]; then [ "$idle" -ge "$away_after" ] || skip
+      else started="$(cat "$state-turn-start" 2>/dev/null)"; [ $(( $(date +%s) - ${started:-0} )) -ge 60 ] || skip; fi ;;
+    notification) [ -z "$idle" ] || [ "$idle" -ge "$away_after" ] || skip ;;
+    *) skip ;;
   esac
 fi
 shopt -s nullglob
