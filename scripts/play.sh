@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # Usage: play.sh <event>  — plays a random clip from sounds/<event>/ in the background.
+# Your own clips in ~/.claude/naija-sounds/<event>/ (mp3/wav/m4a) join the mix; they stay local.
 # NAIJA_SOUND_VOLUME=0..100 (default 60). NAIJA_SOUND_MUTE=1 silences everything.
 [ "${NAIJA_SOUND_MUTE:-0}" = "1" ] && exit 0
-dir="$(cd "$(dirname "$0")/.." && pwd)/sounds/$1"
-files=("$dir"/*.mp3)
-[ -e "${files[0]}" ] || exit 0
+shopt -s nullglob
+mine="$HOME/.claude/naija-sounds/$1"
+files=("$(cd "$(dirname "$0")/.." && pwd)/sounds/$1"/*.mp3 "$mine"/*.mp3 "$mine"/*.wav "$mine"/*.m4a)
+[ "${#files[@]}" -gt 0 ] || exit 0
 # Random pick, never the same clip twice in a row for this event.
 last_file="${TMPDIR:-/tmp}/claude-naija-last-$1"
 last="$(cat "$last_file" 2>/dev/null)"

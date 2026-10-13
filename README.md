@@ -31,11 +31,16 @@ Restart Claude Code. That's it.
 
 Plays with `afplay` (macOS), `paplay` / `ffplay` (Linux) or PowerShell (WSL).
 
-## Add your own lines
+## Your own sounds (private)
 
-Drop any `.mp3` into `sounds/<event>/` — `start`, `submit`, `complete`, `error`,
-`notification`, `precompact`, `session_end`. One is picked at random. No code changes.
-PRs with more Naija lines welcome (Yoruba, Igbo, Hausa, Warri, Port Harcourt… bring am).
+Drop any `.mp3`, `.wav` or `.m4a` into `~/.claude/naija-sounds/<event>/` and it joins the random mix.
+Events: `start`, `submit`, `complete`, `error`, `notification`, `precompact`, `session_end`.
+That folder lives on your machine only — it survives plugin updates and is never published.
+
+## Add lines to the pack
+
+PRs with more Naija lines welcome (Yoruba, Igbo, Hausa, Warri, Port Harcourt… bring am) —
+drop the `.mp3` into `sounds/<event>/`. Only sounds you made or have the rights to.
 
 Voices are AI-generated characters — not real people. Unofficial community plugin, not made by Anthropic.
 Inspired by [claude-sound-fx](https://github.com/6m1w/claude-sound-fx).
