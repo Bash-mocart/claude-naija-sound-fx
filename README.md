@@ -28,6 +28,7 @@ Restart Claude Code. That's it.
 |---|---|---|
 | `NAIJA_SOUND_VOLUME` | `60` | 0–100 |
 | `NAIJA_SOUND_MUTE` | `0` | `1` = silence (meeting mode) |
+| `NAIJA_SOUND_ONLY_MINE` | `0` | `1` = play only your own clips, skip the pack's |
 
 Plays with `afplay` (macOS), `paplay` / `ffplay` (Linux) or PowerShell (WSL).
 
