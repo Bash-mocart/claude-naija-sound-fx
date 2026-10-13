@@ -22,10 +22,24 @@ Stop staring at the terminal — Mummy go call you when e don finish.
 
 Restart Claude Code. That's it.
 
+## Smart mode (default)
+
+So it never gets tiring, it only talks when it matters:
+
+| Event | Plays when |
+|---|---|
+| Claude crashed | Always |
+| Task finished · Claude needs you | Only if you've been away — no keyboard/mouse for 30s (macOS idle timer; elsewhere, a turn that took 60s+) |
+| Start · prompt sent · compacting · session end | Never — you're right there |
+
+Want every event like a full Nollywood soundtrack? `NAIJA_SOUND_MODE=all`.
+
 ## Settings
 
 | Env var | Default | |
 |---|---|---|
+| `NAIJA_SOUND_MODE` | `smart` | `all` = play on every event |
+| `NAIJA_SOUND_AWAY_AFTER` | `30` | seconds without input before you count as away |
 | `NAIJA_SOUND_VOLUME` | `60` | 0–100 |
 | `NAIJA_SOUND_MUTE` | `0` | `1` = silence (meeting mode) |
 | `NAIJA_SOUND_ONLY_MINE` | `0` | `1` = play only your own clips, skip the pack's |

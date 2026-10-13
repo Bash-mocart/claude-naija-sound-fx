@@ -3,14 +3,32 @@
 # Your own clips in ~/.claude/naija-sounds/<event>/ (mp3/wav/m4a) join the mix; they stay local.
 # NAIJA_SOUND_VOLUME=0..100 (default 60). NAIJA_SOUND_MUTE=1 silences everything.
 # NAIJA_SOUND_ONLY_MINE=1 skips the pack's clips and plays only yours.
+# NAIJA_SOUND_MODE=smart (default): errors always; finished / needs-you only when you've been
+#   away NAIJA_SOUND_AWAY_AFTER seconds (default 30); everything else silent. =all plays every event.
 [ "${NAIJA_SOUND_MUTE:-0}" = "1" ] && exit 0
+state="${TMPDIR:-/tmp}/claude-naija"
+if [ "${NAIJA_SOUND_MODE:-smart}" != "all" ]; then
+  away_after="${NAIJA_SOUND_AWAY_AFTER//[^0-9]/}"; away_after="${away_after:-30}"
+  # Seconds since last keyboard/mouse input; empty where we can't tell.
+  idle="$(ioreg -c IOHIDSystem 2>/dev/null | awk '/HIDIdleTime/ {print int($NF/1000000000); exit}')"
+  # ponytail: one global turn timer, so parallel sessions can share it; per-session if that misleads.
+  [ "$1" = "submit" ] && date +%s > "$state-turn-start" 2>/dev/null
+  case "$1" in
+    error) ;;
+    complete)
+      if [ -n "$idle" ]; then [ "$idle" -ge "$away_after" ] || exit 0
+      else started="$(cat "$state-turn-start" 2>/dev/null)"; [ $(( $(date +%s) - ${started:-0} )) -ge 60 ] || exit 0; fi ;;
+    notification) [ -z "$idle" ] || [ "$idle" -ge "$away_after" ] || exit 0 ;;
+    *) exit 0 ;;
+  esac
+fi
 shopt -s nullglob
 mine="$HOME/.claude/naija-sounds/$1"
 files=("$mine"/*.mp3 "$mine"/*.wav "$mine"/*.m4a)
 [ "${NAIJA_SOUND_ONLY_MINE:-0}" = "1" ] || files+=("$(cd "$(dirname "$0")/.." && pwd)/sounds/$1"/*.mp3)
 [ "${#files[@]}" -gt 0 ] || exit 0
 # Random pick, never the same clip twice in a row for this event.
-last_file="${TMPDIR:-/tmp}/claude-naija-last-$1"
+last_file="$state-last-$1"
 last="$(cat "$last_file" 2>/dev/null)"
 pool=(); for x in "${files[@]}"; do [ "$x" != "$last" ] && pool+=("$x"); done
 [ "${#pool[@]}" -eq 0 ] && pool=("${files[@]}")
