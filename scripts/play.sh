@@ -45,11 +45,14 @@ elif command -v ffplay >/dev/null; then # before paplay: older paplay can't deco
   cmd=(ffplay -nodisp -autoexit -loglevel quiet -volume "$vol" "$f")
 elif command -v paplay >/dev/null; then
   cmd=(paplay --volume "$((vol * 65536 / 100))" "$f")
-elif command -v powershell.exe >/dev/null; then # WSL; SoundPlayer is wav-only, MediaPlayer does mp3
-  cmd=(powershell.exe -NoProfile -c "Add-Type -AssemblyName PresentationCore; \$p=New-Object System.Windows.Media.MediaPlayer; \$p.Volume=$vol/100; \$p.Open([uri]'$(wslpath -w "$f")'); \$p.Play(); Start-Sleep 8")
+elif command -v powershell.exe >/dev/null; then # WSL / Git Bash; SoundPlayer is wav-only, MediaPlayer does mp3
+  win="$(wslpath -w "$f" 2>/dev/null || cygpath -w "$f" 2>/dev/null || echo "$f")"
+  win="${win//\'/\'\'}" # escape ' for the PowerShell string
+  cmd=(powershell.exe -NoProfile -c "Add-Type -AssemblyName PresentationCore; \$p=New-Object System.Windows.Media.MediaPlayer; \$p.Volume=$vol/100; \$p.Open([uri]'$win'); \$p.Play(); Start-Sleep 8")
 else
   exit 0
 fi
 # ponytail: no SSH relay like claude-sound-fx; add it if remote users ask.
+[ "${NAIJA_SOUND_SYNC:-0}" = "1" ] && exec "${cmd[@]}" </dev/null >/dev/null 2>&1 # demo: wait for it
 nohup "${cmd[@]}" </dev/null >/dev/null 2>&1 &
 exit 0
